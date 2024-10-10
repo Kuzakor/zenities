@@ -16,7 +16,7 @@ stow .
 cd $HOME
 
 # Install additional packages via yay
-yay -S --noconfirm cbonsai cmatrix cava python-pywal ttf-mononoki otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell zoxide eza fzf thefuck jq socat
+yay -S --noconfirm cbonsai cmatrix cava python-pywal ttf-mononoki otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell zoxide eza fzf thefuck jq socat kitty
 
 # Install Powerlevel10k for zsh
 yay -S --noconfirm zsh-theme-powerlevel10k-git
