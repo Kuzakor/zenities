@@ -1,8 +1,9 @@
 #!/bin/bash
-
+#Install hyprland
+yay -S --noconfirm hyprland
 # Install necessary packages via pacman
 cd $HOME
-sudo pacman -S --noconfirm github-cli stow pamixer brightnessctl playerctl ncspot rofi-wayland hyprlock hypridle hyprpaper yazi neovim neofetch bottom networkmanager bluez bluez-utils rustup zsh
+sudo pacman -S --noconfirm github-cli stow pamixer brightnessctl playerctl ncspot rofi-wayland hyprlock hypridle hyprpaper yazi neofetch bottom networkmanager bluez bluez-utils rustup zsh
 
 # Clone zenities dotfiles
 cd $HOME/.config
@@ -14,13 +15,8 @@ stow .
 # Go back to home directory
 cd $HOME
 
-# Install yay (AUR helper)
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si --noconfirm
-
 # Install additional packages via yay
-yay -S --noconfirm cbonsai cmatrix cava python-pywal ttf-mononoki otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell brave-bin zoxide eza fzf thefuck jq socat
+yay -S --noconfirm cbonsai cmatrix cava python-pywal ttf-mononoki otf-hermit-nerd gvfs dbus libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell zoxide eza fzf thefuck jq socat
 
 # Install Powerlevel10k for zsh
 yay -S --noconfirm zsh-theme-powerlevel10k-git
