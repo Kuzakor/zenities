@@ -40,7 +40,6 @@ sudo systemctl start NetworkManager
 # Change shell to zsh
 chsh -s /bin/zsh
 
-# Reboot the system
-echo "Installation complete. The system will now reboot."
-sudo reboot
+echo "Installation complete"
+
 
