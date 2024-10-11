@@ -41,5 +41,6 @@ sudo systemctl start NetworkManager
 chsh -s /bin/zsh
 
 echo "Installation complete"
+reboot
 
 
