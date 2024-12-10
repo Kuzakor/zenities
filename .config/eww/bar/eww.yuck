@@ -309,7 +309,7 @@
 ;;spotify;;
 
 (defwidget spotify []
-        (button :onclick "spotify"
+        (button :onclick "spotify &"
                 (image :icon "spotify")
         )
 )
