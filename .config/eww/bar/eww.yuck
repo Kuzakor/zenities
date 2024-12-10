@@ -170,7 +170,7 @@
       (for workspace in workspaces
         (button :class "workspace ${current_workspace == workspace.id ? "current" : ""}"
                 :onclick "hyprctl dispatch workspace ${workspace.id}"
-                "${current_workspace == workspace.id ? "" : ""}")
+                "${current_workspace == workspace.id ? "あ" : "え"}")
       )
     )
   )
@@ -306,6 +306,13 @@
 
 ;;;;;;;;;;;;;;;;;;;;
 
+;;spotify;;
+
+(defwidget spotify []
+        (button :onclick "spotify"
+                (image :icon "spotify")
+        )
+)
 
 
 ;;;;;; Groups ;;;;;;
@@ -330,6 +337,7 @@
         :halign "end"
         :vexpand "false"
         :hexpand "false"
+    (spotify)
     (memory)
     (battery)
     (brightness)
@@ -359,6 +367,8 @@
     (center)
     (right))
 )
+
+
 
 ;;;;;;;;;;;;;;;;;;;;
 
