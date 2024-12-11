@@ -30,20 +30,20 @@
                             :initial "false"
                             "~/.config/eww/bar/scripts/is-battery.sh")
 (defpoll clock :interval "10s" "date '+%H:%M'")
-(defpoll current-volume     :interval "1s" 
+(defpoll current-volume     :interval "1s"
                             :initial "0"
                             "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//'")
-(defpoll current-brightness :interval "1s" 
+(defpoll current-brightness :interval "1s"
                             :initial "0"
                             "echo $(( $(brightnessctl get) * 100 / $(brightnessctl max) ))
 ")
-(defpoll current-battery    :interval "15s" 
+(defpoll current-battery    :interval "15s"
                             :initial "0"
                             "~/.config/eww/bar/scripts/get-battery.sh")
 (defpoll time-left          :interval "15s"
                             :initial "0"
                             "~/.config/eww/bar/scripts/get-time-left.sh")
-(defpoll current-memory     :interval "10s"    
+(defpoll current-memory     :interval "10s"
                             :initial "0"
                             "~/.config/eww/bar/scripts/get-memory.sh")
 (defpoll current-music-seek :interval "1s" "~/.config/eww/bar/scripts/get-music-seek.sh")
@@ -161,20 +161,25 @@
                 calendar-short)))))
 
 ;; Workspaces ;;
+
+
 (defwidget workspaces []
-  (eventbox :onscroll "sh ~/.config/eww/bar/scripts/change-active-workspace.sh {} ${current_workspace}"
-    (box :orientation "h"
-         :space-evenly false
-         :class "workspaces"
-         :hexpand true
-      (for workspace in workspaces
-        (button :class "workspace ${current_workspace == workspace.id ? "current" : ""}"
-                :onclick "hyprctl dispatch workspace ${workspace.id}"
-                "${current_workspace == workspace.id ? "あ" : "え"}")
-      )
-    )
-  )
-)
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly true
+       :halign "start"
+       :spacing 10
+    (button :onclick "hyprctl dispatch workspace 0" "一")
+    (button :onclick "hyprctl dispatch workspace 1" "二")
+    (button :onclick "hyprctl dispatch workspace 2" "三")
+    (button :onclick "hyprctl dispatch workspace 3" "四")
+    (button :onclick "hyprctl dispatch workspace 4" "五")
+    (button :onclick "hyprctl dispatch workspace 5" "六")
+    (button :onclick "hyprctl dispatch workspace 6" "七")
+    (button :onclick "hyprctl dispatch workspace 7" "八")
+    (button :onclick "hyprctl dispatch workspace 8" "九")
+    (button :onclick "hyprctl dispatch workspace 9" "十")
+    ))
 
 ;; Wifi ;;
 (defwidget wifi []
@@ -296,24 +301,33 @@
 
 ;; Calendar Widget ""
 (defwidget cal []
-	(box :class "cal-box" 
+	(box :class "cal-box"
 		 :orientation "v"
 	(box :class "cal-inner-box"
-	(calendar :class "cal" 
-			  :day calendar-day 
-			  :month calendar-month 
+	(calendar :class "cal"
+			  :day calendar-day
+			  :month calendar-month
 			  :year calendar-year))))
 
 ;;;;;;;;;;;;;;;;;;;;
 
-;;spotify;;
+;;Spotify;;
 
 (defwidget spotify []
-        (button :onclick "spotify &"
+        (button 
+        :onclick "spotify &"
                 (image :icon "spotify")
         )
 )
 
+;;Discord;;
+
+(defwidget discord []
+        (button :onclick "discord &"
+        (image  :path "/usr/share/icons/hicolor/256x256/apps/discord.png"
+        :image-width 23
+        )
+))
 
 ;;;;;; Groups ;;;;;;
 
@@ -337,12 +351,19 @@
         :halign "end"
         :vexpand "false"
         :hexpand "false"
+    (discord)
+    (label :text "‎‎‎ ‎")
     (spotify)
-    (memory)
+    (label :text "‎‎‎ ‎")
+    ;;(memory)
     (battery)
     (brightness)
     (volume)
     (wifi)
+    (systray
+        :orientation "h"
+        :space-evenly true
+    )
     (clock))
 )
 
@@ -367,8 +388,6 @@
     (center)
     (right))
 )
-
-
 
 ;;;;;;;;;;;;;;;;;;;;
 
