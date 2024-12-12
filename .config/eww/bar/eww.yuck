@@ -57,7 +57,7 @@
 (defpoll calendar-year :interval "10h"
     "date '+%Y'")
 (defpoll calendar-short :interval "10h" "date '+%b %d, %Y'")
-(defpoll temperature :interval "10s" "sensors -f | grep -A 0 'Composite' | cut -c15-23")
+(defpoll temperature :interval "10s" "sensors -f | grep -A 0 'Package id 0' | cut -c15-23")
 ;;;;;;;;;;;;;;;;;;;;
 
 
