@@ -29,7 +29,7 @@
                             :interval "24h"
                             :initial "false"
                             "~/.config/eww/bar/scripts/is-battery.sh")
-(defpoll clock :interval "10s" "date '+%I:%M %p'PM")
+(defpoll clock :interval "10s" "date '+%I:%M %p'")
 (defpoll current-volume     :interval "1s"
                             :initial "0"
                             "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//'")
