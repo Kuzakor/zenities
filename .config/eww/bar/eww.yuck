@@ -29,7 +29,7 @@
                             :interval "24h"
                             :initial "false"
                             "~/.config/eww/bar/scripts/is-battery.sh")
-(defpoll clock :interval "10s" "date '+%H:%M'")
+(defpoll clock :interval "10s" "date '+%I:%M %p'PM")
 (defpoll current-volume     :interval "1s"
                             :initial "0"
                             "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//'")
@@ -57,6 +57,7 @@
 (defpoll calendar-year :interval "10h"
     "date '+%Y'")
 (defpoll calendar-short :interval "10h" "date '+%b %d, %Y'")
+(defpoll temperature :interval "10s" "sensors -f | grep -A 0 'Composite' | cut -c15-23")
 ;;;;;;;;;;;;;;;;;;;;
 
 
@@ -364,7 +365,12 @@
         :orientation "h"
         :space-evenly true
     )
-    (clock))
+    (clock)
+    (label :text "‎‎‎ ‎")
+    (image :icon "temperature-warm")
+    (label :class "clock" 
+        :text temperature)
+    )
 )
 
 ;; Center Group ;;
