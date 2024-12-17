@@ -367,7 +367,7 @@
     )
     (clock)
     (label :text "‎‎‎ ‎")
-    (image :icon "temperature-warm")
+    (image :path "/home/<username>/.config/eww/bar/temperature-warm.svg")
     (label :class "clock" 
         :text temperature)
     )
